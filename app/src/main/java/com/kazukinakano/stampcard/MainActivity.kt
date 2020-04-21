@@ -109,8 +109,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setNumberOfVisitsAndRank() {
-        number_of_visits.text =
-            getString(R.string.number_of_visits) + repository.numberOfVisits + getString(R.string.times)
+        number.text = repository.numberOfVisits.toString()
         when {
             repository.numberOfVisits < 40 -> rank.text = getString(R.string.rank_member)
             repository.numberOfVisits < 80 -> rank.text = getString(R.string.rank_silver)

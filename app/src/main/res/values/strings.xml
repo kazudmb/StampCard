@@ -9,6 +9,7 @@
     <string name="logout">ログアウト</string>
     <string name="forgot_password">＊パスワードを忘れた方はこちら</string>
     <string name="number_of_visits">来店回数：</string>
+    <string name="number">0</string>
     <string name="times">回</string>
     <string name="rank_member">会員ランク：メンバー</string>
     <string name="rank_silver">会員ランク：シルバーVIP</string>
