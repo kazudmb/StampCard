@@ -18,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)
-        toolbar.title = "ログイン"
+        toolbar.title = getString(R.string.login)
         setSupportActionBar(toolbar)
 
         login_button.setOnClickListener {
@@ -42,27 +42,30 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        // [START sign_in_with_email]
         repository.auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithEmail:success")
-                    Toast.makeText(baseContext, "ログインに成功しました", Toast.LENGTH_SHORT).show()
-                    val user = repository.auth.currentUser
+                    // Sign in success
+                    Log.d(TAG, getString(R.string.sign_in_with_email_success_log))
+                    Toast.makeText(
+                        baseContext,
+                        getString(R.string.sign_in_with_email_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     finish()
                 } else {
                     // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "ログインに失敗しました", Toast.LENGTH_SHORT).show()
+                    Log.w(TAG, getString(R.string.sign_in_with_email_failure_log), task.exception)
+                    Toast.makeText(
+                        baseContext,
+                        getString(R.string.sign_in_with_email_failure),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
-                // [START_EXCLUDE]
                 if (!task.isSuccessful) {
                 }
-                // [END_EXCLUDE]
             }
-        // [END sign_in_with_email]
     }
 
     private fun validateForm(): Boolean {
@@ -70,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
 
         val email = field_email.text.toString()
         if (TextUtils.isEmpty(email)) {
-            field_email.error = "入力してください"
+            field_email.error = getString(R.string.input_text)
             valid = false
         } else {
             field_email.error = null
@@ -78,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
 
         val password = field_password.text.toString()
         if (TextUtils.isEmpty(password)) {
-            field_password.error = "入力してください"
+            field_password.error = getString(R.string.input_text)
             valid = false
         } else {
             field_password.error = null

@@ -27,12 +27,12 @@ class MainActivity : AppCompatActivity() {
         repository.auth = FirebaseAuth.getInstance()
 
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)
-        toolbar.title = "Stamp Card"
+        toolbar.title = getString(R.string.app_name)
         setSupportActionBar(toolbar)
 
         button_stamp.setOnClickListener {
             if (repository.auth.currentUser == null) {
-                Toast.makeText(baseContext, "ログインしてください", Toast.LENGTH_SHORT).show()
+                Toast.makeText(baseContext, getString(R.string.please_login), Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, QRCodeDisplayActivity::class.java)
                 startActivity(intent)
@@ -97,10 +97,10 @@ class MainActivity : AppCompatActivity() {
                     repository.numberOfVisits = result.data?.get("NumberOfVisits") as Long
                     setNumberOfVisitsAndRank()
                     setStamp()
-                    Log.d(TAG, "Success getting documents.")
+                    Log.d(TAG, getString(R.string.getting_documents_success_log))
                 }
                 .addOnFailureListener { exception ->
-                    Log.w(TAG, "Error getting documents.", exception)
+                    Log.w(TAG, getString(R.string.getting_documents_failure_log), exception)
                 }
         } else {
             setNumberOfVisitsAndRank()
@@ -109,11 +109,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setNumberOfVisitsAndRank() {
-        number_of_visits.text = "来店回数：" + repository.numberOfVisits + "回"
+        number_of_visits.text =
+            getString(R.string.number_of_visits) + repository.numberOfVisits + getString(R.string.times)
         when {
-            repository.numberOfVisits < 40 -> rank.text = "会員ランク：メンバー"
-            repository.numberOfVisits < 80 -> rank.text = "会員ランク：シルバーVIP"
-            repository.numberOfVisits >= 80 -> rank.text = "会員ランク：ゴールドVIP"
+            repository.numberOfVisits < 40 -> rank.text = getString(R.string.rank_member)
+            repository.numberOfVisits < 80 -> rank.text = getString(R.string.rank_silver)
+            repository.numberOfVisits >= 80 -> rank.text = getString(R.string.rank_gold)
         }
     }
 
@@ -124,12 +125,13 @@ class MainActivity : AppCompatActivity() {
         val layerDrawable = LayerDrawable(layers)
 
         for (i in 1..10) {
-            var name = "stamp_area$i"
-            var id = resources.getIdentifier(name, "id", packageName)
+            val name = "stamp_area$i"
+            val defType = "id"
+            val id = resources.getIdentifier(name, defType, packageName)
             findViewById<ImageView>(id).setImageDrawable(stamp)
         }
 
-        var loopCount: Int
+        val loopCount: Int
         val numberOfVisits = repository.numberOfVisits.toString()
         val numberOfCutOut = numberOfVisits.substring(numberOfVisits.length - 1).toInt()
 
@@ -146,7 +148,8 @@ class MainActivity : AppCompatActivity() {
 
         for (i in 1..loopCount) {
             val name = "stamp_area$i"
-            val id = resources.getIdentifier(name, "id", packageName)
+            val defType = "id"
+            val id = resources.getIdentifier(name, defType, packageName)
             findViewById<ImageView>(id).setImageDrawable(layerDrawable)
         }
     }
@@ -170,6 +173,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private val TAG = "MainActivity"
+        private const val TAG = "MainActivity"
     }
 }

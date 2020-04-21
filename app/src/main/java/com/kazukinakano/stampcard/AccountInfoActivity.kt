@@ -18,7 +18,7 @@ class AccountInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_account_info)
 
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)
-        toolbar.title = "アカウント情報"
+        toolbar.title = getString(R.string.account_info)
         setSupportActionBar(toolbar)
 
         email.text = repository.auth.currentUser?.email ?: String.toString()
@@ -55,6 +55,6 @@ class AccountInfoActivity : AppCompatActivity() {
     private fun signOut() {
         repository.auth.signOut()
         repository.numberOfVisits = 0
-        Toast.makeText(baseContext, "ログアウトに成功しました", Toast.LENGTH_SHORT).show()
+        Toast.makeText(baseContext, getString(R.string.success_logout), Toast.LENGTH_SHORT).show()
     }
 }

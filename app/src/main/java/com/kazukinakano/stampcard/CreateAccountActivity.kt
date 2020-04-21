@@ -18,10 +18,10 @@ class CreateAccountActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_user)
 
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)
-        toolbar.title = "新規登録"
+        toolbar.title = getString(R.string.new_registration)
         setSupportActionBar(toolbar)
 
-        new_registration.setOnClickListener{
+        new_registration.setOnClickListener {
             createAccount(field_email.text.toString(), field_password.text.toString())
         }
     }
@@ -32,22 +32,22 @@ class CreateAccountActivity : AppCompatActivity() {
             return
         }
 
-        // [START create_user_with_email]
         repository.auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "createUserWithEmail:success")
+                    // Sign in success
+                    Log.d(TAG, getString(R.string.create_user_with_email_success_log))
                     createCollection()
                 } else {
                     // If sign in fails, display a message to the user.
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "新規登録に失敗しました", Toast.LENGTH_SHORT).show()
+                    Log.w(TAG, getString(R.string.create_user_with_email_failure_log), task.exception)
+                    Toast.makeText(
+                        baseContext,
+                        getString(R.string.create_user_with_email_failure),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-                // [START_EXCLUDE]
-                // [END_EXCLUDE]
             }
-        // [END create_user_with_email]
     }
 
     private fun validateForm(): Boolean {
@@ -55,7 +55,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
         val email = field_email.text.toString()
         if (TextUtils.isEmpty(email)) {
-            field_email.error = "入力してください"
+            field_email.error = getString(R.string.input_text)
             valid = false
         } else {
             field_email.error = null
@@ -63,7 +63,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
         val password = field_password.text.toString()
         if (TextUtils.isEmpty(password)) {
-            field_password.error = "入力してください"
+            field_password.error = getString(R.string.input_text)
             valid = false
         } else {
             field_password.error = null
@@ -88,28 +88,31 @@ class CreateAccountActivity : AppCompatActivity() {
                 sendEmailVerification()
             }
             .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
+                Log.w(TAG, getString(R.string.adding_document_failure_log), e)
             }
     }
 
     private fun sendEmailVerification() {
-        // Send verification email
-        // [START send_email_verification]
         val user = repository.auth.currentUser
         user?.sendEmailVerification()
             ?.addOnCompleteListener(this) { task ->
-                // [START_EXCLUDE]
                 if (task.isSuccessful) {
-                    Log.d(TAG, "sendEmailVerification:success")
-                    Toast.makeText(baseContext, "登録確認メールが送信されました", Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, getString(R.string.send_email_verification_of_registration_success_log))
+                    Toast.makeText(
+                        baseContext,
+                        getString(R.string.send_email_verification_of_registration_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     finish()
                 } else {
-                    Log.e(TAG, "sendEmailVerification:failure", task.exception)
-                    Toast.makeText(baseContext, "登録確認メールの送信が失敗しました", Toast.LENGTH_SHORT).show()
+                    Log.e(TAG, getString(R.string.send_email_verification_of_registration_failure_log), task.exception)
+                    Toast.makeText(
+                        baseContext,
+                        getString(R.string.send_email_verification_of_registration_failure),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-                // [END_EXCLUDE]
             }
-        // [END send_email_verification]
     }
 
     companion object {

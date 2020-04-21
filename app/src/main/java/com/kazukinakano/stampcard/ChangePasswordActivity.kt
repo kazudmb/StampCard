@@ -16,7 +16,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_change_password)
 
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)
-        toolbar.title = "パスワードの再設定"
+        toolbar.title = getString(R.string.change_password)
         setSupportActionBar(toolbar)
 
         send_button.setOnClickListener {
@@ -28,21 +28,23 @@ class ChangePasswordActivity : AppCompatActivity() {
         repository.auth.sendPasswordResetEmail(field_email.text.toString())
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(baseContext, "再設定メールが送信されました", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, getString(R.string.email_sent_success), Toast.LENGTH_SHORT)
+                        .show()
                     finish()
-                    Log.d(TAG, "Email sent:success")
+                    Log.d(TAG, getString(R.string.email_sent_success_log))
                 } else {
-                    Toast.makeText(baseContext, "再設定メールの送信に失敗しました", Toast.LENGTH_SHORT).show()
-                    Log.w(TAG, "Email sent:failure")
+                    Toast.makeText(baseContext, getString(R.string.email_sent_failure), Toast.LENGTH_SHORT)
+                        .show()
+                    Log.w(TAG, getString(R.string.email_sent_failure_log))
                 }
             }
             .addOnFailureListener {
-                Toast.makeText(baseContext, "正しいメールアドレスを入力してください", Toast.LENGTH_SHORT).show()
-                Log.w(TAG, "Email sent:failure", it)
+                Toast.makeText(baseContext, getString(R.string.input_correct_email), Toast.LENGTH_SHORT).show()
+                Log.w(TAG, getString(R.string.email_sent_failure_log), it)
             }
     }
 
-        companion object {
+    companion object {
         private const val TAG = "ResettingPassword"
     }
 }

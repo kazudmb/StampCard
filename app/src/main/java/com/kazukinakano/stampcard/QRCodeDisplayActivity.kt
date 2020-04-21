@@ -17,7 +17,7 @@ class QRCodeDisplayActivity : AppCompatActivity() {
         setContentView(R.layout.activity_qrcode)
 
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)
-        toolbar.title = "Bar Energy"
+        toolbar.title = getString(R.string.app_name)
         setSupportActionBar(toolbar)
 
         val dp = 300
@@ -29,13 +29,13 @@ class QRCodeDisplayActivity : AppCompatActivity() {
             val bitmap = barcodeEncoder.encodeBitmap(repository.auth.uid.toString(), BarcodeFormat.QR_CODE, size, size)
             val imageQr = findViewById<ImageView>(R.id.qr_code)
             imageQr.setImageBitmap(bitmap)
-            Log.d(TAG, "Success generate QRCode.")
+            Log.d(TAG, getString(R.string.generate_qrcode_success_log))
         } catch (exception: Exception) {
-            Log.w(TAG, "Error generate QRCode.", exception)
+            Log.w(TAG, getString(R.string.generate_qrcode_failure_log), exception)
         }
     }
 
     companion object {
-        private val TAG = "QRCodeDisplayActivity"
+        private const val TAG = "QRCodeDisplayActivity"
     }
 }
