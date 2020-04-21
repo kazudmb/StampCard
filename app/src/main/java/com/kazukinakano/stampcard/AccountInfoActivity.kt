@@ -54,6 +54,7 @@ class AccountInfoActivity : AppCompatActivity() {
 
     private fun signOut() {
         repository.auth.signOut()
+        repository.numberOfVisits = 0
         Toast.makeText(baseContext, "ログアウトに成功しました", Toast.LENGTH_SHORT).show()
     }
 }

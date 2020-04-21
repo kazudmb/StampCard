@@ -103,7 +103,8 @@ class MainActivity : AppCompatActivity() {
                     Log.w(TAG, "Error getting documents.", exception)
                 }
         } else {
-            return
+            setNumberOfVisitsAndRank()
+            setStamp()
         }
     }
 
@@ -117,7 +118,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setStamp() {
-
         val stamp = resources.getDrawable(R.drawable.logo_stamp_area_icon)
         val approved = resources.getDrawable(R.drawable.logo_approved)
         val layers = arrayOf<Drawable>(stamp, approved)
