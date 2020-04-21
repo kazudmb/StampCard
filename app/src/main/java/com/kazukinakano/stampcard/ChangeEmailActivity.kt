@@ -22,13 +22,9 @@ class ChangeEmailActivity : AppCompatActivity() {
 
         change_email_button.setOnClickListener {
 
-            // Get auth credentials from the user for re-authentication. The example below shows
-            // email and password credentials but there are multiple possible providers,
-            // such as GoogleAuthProvider or FacebookAuthProvider.
-
-            // TODO:パスワードの取得方法 or パスワードの保存方法を考慮すること
-            val credential =
-                EmailAuthProvider.getCredential(repository.auth.currentUser?.email.toString(), "test")
+            val credential = EmailAuthProvider.getCredential(
+                repository.auth.currentUser?.email.toString(), field_password.text.toString()
+            )
 
             // Prompt the user to re-provide their sign-in credentials
             repository.auth.currentUser?.reauthenticate(credential)?.addOnCompleteListener {
