@@ -51,16 +51,16 @@
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="来店回数：0回"/>
+                            android:text="@string/number_of_visits"/>
                     <TextView
                             android:id="@+id/rank"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="right"
+                            android:gravity="end"
                             android:layout_marginEnd="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="会員ランク：メンバー"/>
+                            android:text="@string/rank"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -174,16 +174,16 @@
                         android:layout_marginEnd="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="特典内容：スタンプカードが40ポイント貯まると、シャンパン1本をサービス致します！"/>
+                        android:text="@string/benefits_text"/>
 
                 <Button
-                        android:id="@+id/button"
+                        android:id="@+id/button_stamp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/benefits_text"
-                        android:text="スタンプを押してもらう"/>
+                        android:text="@string/button_stamp"/>
             </RelativeLayout>
         </ScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

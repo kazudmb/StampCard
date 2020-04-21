@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         toolbar.title = "Stamp Card"
         setSupportActionBar(toolbar)
 
-        button.setOnClickListener {
+        button_stamp.setOnClickListener {
             if (repository.auth.currentUser == null) {
                 Toast.makeText(baseContext, "ログインしてください", Toast.LENGTH_SHORT).show()
             } else {

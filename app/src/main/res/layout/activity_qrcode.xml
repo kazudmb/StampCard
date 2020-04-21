@@ -23,10 +23,9 @@
             android:layout_marginTop="100dp"/>
 
     <TextView
-            android:id="@+id/benefits_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="このQRコードを提示して下さい"
+            android:text="@string/text_show_qr_code"
             android:layout_gravity="center"/>
 </LinearLayout>

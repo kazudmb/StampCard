@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">StampCard</string>
+    <string name="mail_address">メールアドレス</string>
+    <string name="password">パスワード</string>
+    <string name="send">送信</string>
+    <string name="explanation_of_resetting">登録時に入力したメールアドレスを入力してください。パスワード再設定の手順を送信します。</string>
+    <string name="new_registration">新規登録</string>
+    <string name="login">ログイン</string>
+    <string name="forgot_password">＊パスワードを忘れた方はこちら</string>
+    <string name="number_of_visits">来店回数：0回</string>
+    <string name="rank">会員ランク：メンバー</string>
+    <string name="benefits_text">特典内容：スタンプカードが40ポイント貯まると、シャンパン1本をサービス致します！</string>
+    <string name="button_stamp">スタンプを押してもらう</string>
+    <string name="text_show_qr_code">このQRコードを提示して下さい</string>
 </resources>
