@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         repository.auth = FirebaseAuth.getInstance()
 
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)
-        toolbar.title = "Bar Energy"
+        toolbar.title = "Stamp Card"
         setSupportActionBar(toolbar)
 
         button.setOnClickListener {
