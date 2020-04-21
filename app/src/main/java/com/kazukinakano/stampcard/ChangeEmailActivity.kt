@@ -1,6 +1,7 @@
 package com.kazukinakano.stampcard
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,15 +23,17 @@ class ChangeEmailActivity : AppCompatActivity() {
 
         change_email_button.setOnClickListener {
 
-            val credential = EmailAuthProvider.getCredential(
-                repository.auth.currentUser?.email.toString(), field_password.text.toString()
-            )
+            if (validateForm()) {
+                val credential = EmailAuthProvider.getCredential(
+                    repository.auth.currentUser?.email.toString(), field_password.text.toString()
+                )
 
-            // Prompt the user to re-provide their sign-in credentials
-            repository.auth.currentUser?.reauthenticate(credential)?.addOnCompleteListener {
-                Log.d(TAG, getString(R.string.user_re_authenticated_log))
-                repository.auth.currentUser?.updateEmail(field_email.text.toString())
-                sendEmailVerification()
+                // Prompt the user to re-provide their sign-in credentials
+                repository.auth.currentUser?.reauthenticate(credential)?.addOnCompleteListener {
+                    Log.d(TAG, getString(R.string.user_re_authenticated_log))
+                    repository.auth.currentUser?.updateEmail(field_email.text.toString())
+                    sendEmailVerification()
+                }
             }
         }
     }
@@ -56,6 +59,28 @@ class ChangeEmailActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+    }
+
+    private fun validateForm(): Boolean {
+        var valid = true
+
+        val email = field_email.text.toString()
+        if (TextUtils.isEmpty(email)) {
+            field_email.error = getString(R.string.input_text)
+            valid = false
+        } else {
+            field_email.error = null
+        }
+
+        val password = field_password.text.toString()
+        if (TextUtils.isEmpty(password)) {
+            field_password.error = getString(R.string.input_text)
+            valid = false
+        } else {
+            field_password.error = null
+        }
+
+        return valid
     }
 
     companion object {

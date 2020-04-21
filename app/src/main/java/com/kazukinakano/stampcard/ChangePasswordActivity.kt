@@ -1,6 +1,7 @@
 package com.kazukinakano.stampcard
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -25,23 +26,39 @@ class ChangePasswordActivity : AppCompatActivity() {
     }
 
     private fun sendPasswordResetEmail() {
-        repository.auth.sendPasswordResetEmail(field_email.text.toString())
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(baseContext, getString(R.string.email_sent_success), Toast.LENGTH_SHORT)
-                        .show()
-                    finish()
-                    Log.d(TAG, getString(R.string.email_sent_success_log))
-                } else {
-                    Toast.makeText(baseContext, getString(R.string.email_sent_failure), Toast.LENGTH_SHORT)
-                        .show()
-                    Log.w(TAG, getString(R.string.email_sent_failure_log))
+        if(validateForm()){
+            repository.auth.sendPasswordResetEmail(field_email.text.toString())
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(baseContext, getString(R.string.email_sent_success), Toast.LENGTH_SHORT)
+                            .show()
+                        finish()
+                        Log.d(TAG, getString(R.string.email_sent_success_log))
+                    } else {
+                        Toast.makeText(baseContext, getString(R.string.email_sent_failure), Toast.LENGTH_SHORT)
+                            .show()
+                        Log.w(TAG, getString(R.string.email_sent_failure_log))
+                    }
                 }
-            }
-            .addOnFailureListener {
-                Toast.makeText(baseContext, getString(R.string.input_correct_email), Toast.LENGTH_SHORT).show()
-                Log.w(TAG, getString(R.string.email_sent_failure_log), it)
-            }
+                .addOnFailureListener {
+                    Toast.makeText(baseContext, getString(R.string.input_correct_email), Toast.LENGTH_SHORT).show()
+                    Log.w(TAG, getString(R.string.email_sent_failure_log), it)
+                }
+        }
+    }
+
+    private fun validateForm(): Boolean {
+        var valid = true
+
+        val email = field_email.text.toString()
+        if (TextUtils.isEmpty(email)) {
+            field_email.error = getString(R.string.input_text)
+            valid = false
+        } else {
+            field_email.error = null
+        }
+
+        return valid
     }
 
     companion object {
