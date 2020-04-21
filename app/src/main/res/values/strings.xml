@@ -46,6 +46,10 @@
     <string name="sign_in_with_email_success_log">signInWithEmail:success</string>
     <string name="sign_in_with_email_failure">ログインに失敗しました</string>
     <string name="sign_in_with_email_failure_log">signInWithEmail:failure</string>
+    <string name="user_email_address_updated_success">メールアドレス変更に成功しました</string>
+    <string name="user_email_address_updated_success_log">User email address updated:success</string>
+    <string name="user_email_address_updated_failure">メールアドレス変更に失敗しました</string>
+    <string name="user_email_address_updated_failure_log">User email address updated:failure</string>
 
     <string name="user_re_authenticated_log">User re-authenticated.</string>
     <string name="adding_document_failure_log">adding document:failure</string>

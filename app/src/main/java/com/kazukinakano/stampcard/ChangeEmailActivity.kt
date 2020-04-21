@@ -32,7 +32,19 @@ class ChangeEmailActivity : AppCompatActivity() {
                 repository.auth.currentUser?.reauthenticate(credential)?.addOnCompleteListener {
                     Log.d(TAG, getString(R.string.user_re_authenticated_log))
                     repository.auth.currentUser?.updateEmail(field_email.text.toString())
-                    sendEmailVerification()
+                        ?.addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                sendEmailVerification()
+                                Log.d(TAG, getString(R.string.user_email_address_updated_success_log))
+                            } else {
+                                Toast.makeText(
+                                    baseContext,
+                                    getString(R.string.user_email_address_updated_failure),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                Log.w(TAG, getString(R.string.user_email_address_updated_failure_log))
+                            }
+                        }
                 }
             }
         }
