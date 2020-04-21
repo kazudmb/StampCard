@@ -16,7 +16,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_change_password)
 
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)
-        toolbar.title = getString(R.string.change_password)
+        toolbar.title = getString(R.string.resetting_password)
         setSupportActionBar(toolbar)
 
         send_button.setOnClickListener {
