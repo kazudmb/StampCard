@@ -92,7 +92,7 @@
                                 android:id="@+id/stamp_area1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/logo_stamp_area_icon"
+                                android:src="@drawable/logo_stamp_area_icon1"
                                 android:background="@drawable/stroke_line"
                                 android:layout_weight="1"
                                 android:adjustViewBounds="true"/>
@@ -100,7 +100,7 @@
                                 android:id="@+id/stamp_area2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/logo_stamp_area_icon"
+                                android:src="@drawable/logo_stamp_area_icon2"
                                 android:background="@drawable/stroke_line"
                                 android:layout_weight="1"
                                 android:adjustViewBounds="true"/>
@@ -108,7 +108,7 @@
                                 android:id="@+id/stamp_area3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/logo_stamp_area_icon"
+                                android:src="@drawable/logo_stamp_area_icon3"
                                 android:background="@drawable/stroke_line"
                                 android:layout_weight="1"
                                 android:adjustViewBounds="true"/>
@@ -116,7 +116,7 @@
                                 android:id="@+id/stamp_area4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/logo_stamp_area_icon"
+                                android:src="@drawable/logo_stamp_area_icon4"
                                 android:background="@drawable/stroke_line"
                                 android:layout_weight="1"
                                 android:adjustViewBounds="true"/>
@@ -124,7 +124,7 @@
                                 android:id="@+id/stamp_area5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/logo_stamp_area_icon"
+                                android:src="@drawable/logo_stamp_area_icon5"
                                 android:background="@drawable/stroke_line"
                                 android:layout_weight="1"
                                 android:adjustViewBounds="true"/>
@@ -138,7 +138,7 @@
                                 android:id="@+id/stamp_area6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/logo_stamp_area_icon"
+                                android:src="@drawable/logo_stamp_area_icon6"
                                 android:background="@drawable/stroke_line"
                                 android:layout_weight="1"
                                 android:adjustViewBounds="true"/>
@@ -146,7 +146,7 @@
                                 android:id="@+id/stamp_area7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/logo_stamp_area_icon"
+                                android:src="@drawable/logo_stamp_area_icon7"
                                 android:background="@drawable/stroke_line"
                                 android:layout_weight="1"
                                 android:adjustViewBounds="true"/>
@@ -154,7 +154,7 @@
                                 android:id="@+id/stamp_area8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/logo_stamp_area_icon"
+                                android:src="@drawable/logo_stamp_area_icon8"
                                 android:background="@drawable/stroke_line"
                                 android:layout_weight="1"
                                 android:adjustViewBounds="true"/>
@@ -162,7 +162,7 @@
                                 android:id="@+id/stamp_area9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/logo_stamp_area_icon"
+                                android:src="@drawable/logo_stamp_area_icon9"
                                 android:background="@drawable/stroke_line"
                                 android:layout_weight="1"
                                 android:adjustViewBounds="true"/>
@@ -170,7 +170,7 @@
                                 android:id="@+id/stamp_area10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/logo_stamp_area_icon"
+                                android:src="@drawable/logo_stamp_area_icon10"
                                 android:background="@drawable/stroke_line"
                                 android:layout_weight="1"
                                 android:adjustViewBounds="true"/>

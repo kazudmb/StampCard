@@ -1,7 +1,6 @@
 package com.kazukinakano.stampcard
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import android.os.AsyncTask
 import android.os.Bundle
@@ -12,6 +11,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.res.ResourcesCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
@@ -118,16 +118,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setStamp() {
-        val stamp = resources.getDrawable(R.drawable.logo_stamp_area_icon)
-        val approved = resources.getDrawable(R.drawable.logo_approved)
-        val layers = arrayOf<Drawable>(stamp, approved)
-        val layerDrawable = LayerDrawable(layers)
+        val stamp = listOf(
+            ResourcesCompat.getDrawable(resources, R.drawable.logo_stamp_area_icon1, null),
+            ResourcesCompat.getDrawable(resources, R.drawable.logo_stamp_area_icon2, null),
+            ResourcesCompat.getDrawable(resources, R.drawable.logo_stamp_area_icon3, null),
+            ResourcesCompat.getDrawable(resources, R.drawable.logo_stamp_area_icon4, null),
+            ResourcesCompat.getDrawable(resources, R.drawable.logo_stamp_area_icon5, null),
+            ResourcesCompat.getDrawable(resources, R.drawable.logo_stamp_area_icon6, null),
+            ResourcesCompat.getDrawable(resources, R.drawable.logo_stamp_area_icon7, null),
+            ResourcesCompat.getDrawable(resources, R.drawable.logo_stamp_area_icon8, null),
+            ResourcesCompat.getDrawable(resources, R.drawable.logo_stamp_area_icon9, null),
+            ResourcesCompat.getDrawable(resources, R.drawable.logo_stamp_area_icon10, null)
+            )
 
         for (i in 1..10) {
             val name = "stamp_area$i"
             val defType = "id"
             val id = resources.getIdentifier(name, defType, packageName)
-            findViewById<ImageView>(id).setImageDrawable(stamp)
+            findViewById<ImageView>(id).setImageDrawable(stamp[i - 1])
         }
 
         val loopCount: Int
@@ -146,6 +154,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         for (i in 1..loopCount) {
+
+            val approved = ResourcesCompat.getDrawable(resources, R.drawable.logo_stamp_icon1, null)
+            val layers = arrayOf(stamp[i - 1], approved)
+            val layerDrawable = LayerDrawable(layers)
+
             val name = "stamp_area$i"
             val defType = "id"
             val id = resources.getIdentifier(name, defType, packageName)
